@@ -1,3 +1,3 @@
 # StockTracker
 
-This is a software stocker tracking application.
+This is a stock price tracking software application.
