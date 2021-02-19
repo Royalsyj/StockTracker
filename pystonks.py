@@ -2,6 +2,7 @@ import yfinance as yf
 import os
 import time
 import math
+from stockalarm import StockAlarm 
 
 
 #-------------- Example --------------#
