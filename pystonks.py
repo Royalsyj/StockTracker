@@ -1,8 +1,17 @@
 import yfinance as yf
 import os
-import time
+import datetime
 import math
 from stockalarm import StockAlarm 
+
+
+now = datetime.datetime.now().date()
+
+friday = "2021-02-19"
+stonkList = "GME AMC PLTR TSLA"
+data = yf.download(tickers = stonkList, interval = "1m",start = friday)
+
+print(data)
 
 
 #-------------- Example --------------#
