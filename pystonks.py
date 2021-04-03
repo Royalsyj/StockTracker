@@ -1,8 +1,29 @@
 import yfinance as yf
 import os
-import time
+import datetime
 import math
 from stockalarm import StockAlarm 
+
+def gradient(current, previous):
+
+    gradient = current/previous
+
+    return gradient
+
+now = datetime.datetime.now().date()
+
+monday = "2021-03-29"
+stonkList = "GME AMC PLTR TSLA"
+data = yf.download(tickers = stonkList, interval = "1m",start = monday)
+
+print(data)
+
+NXE = yf.Ticker("NXE")
+GME = yf.Ticker("GME")
+AMC = yf.Ticker("AMC")
+APHA = yf.Ticker("APHA")
+
+previousMarketPrice = {"NXE": NXE.info["regularMarketPrice"], "GME": GME.info["regularMarketPrice"], "AMC": AMC.info["regularMarketPrice"], "APHA": APHA.info["regularMarketPrice"]}
 
 
 #-------------- Example --------------#
@@ -24,3 +45,32 @@ from stockalarm import StockAlarm
 # print("Ask: " + str(GME.info["ask"]))
 # print("Ask: " + str(AMC.info["ask"]))
 # print("Ask: " + str(APHA.info["ask"]))
+
+
+### Added by YJ on 3 April 2021
+
+currentNXE = NXE.info["regularMarketPrice"]
+currentGME = GME.info["regularMarketPrice"]
+currentAMC = AMC.info["regularMarketPrice"]
+currentAPHA = APHA.info["regularMarketPrice"]
+
+previousNXE = previousMarketPrice["NXE"]
+previousGME = previousMarketPrice["GME"]
+previousAMC = previousMarketPrice["AMC"]
+previousAPHA = previousMarketPrice["APHA"]
+
+gradients = {"NXE": gradient(currentNXE, previousNXE), "GME": gradient(currentGME, previousGME), "AMC": gradient(currentAMC, previousAMC), "APHA": gradient(currentAPHA, previousAPHA)}
+
+for key in gradients:
+
+    if(gradients[key] > 1):
+
+        print("Stock Name: " + key)
+        StockAlarm.rocketTrend
+
+    elif(gradients[key] < 1):
+
+        print("Stock Name: " + key)
+        StockAlarm.crashingTrend
+
+previousMarketPrice = {"NXE": NXE.info["regularMarketPrice"], "GME": GME.info["regularMarketPrice"], "AMC": AMC.info["regularMarketPrice"], "APHA": APHA.info["regularMarketPrice"]}
