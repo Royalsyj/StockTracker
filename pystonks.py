@@ -3,17 +3,22 @@ import os
 import datetime
 import math
 from stockalarm import StockAlarm 
+import time
 
 
 now = datetime.datetime.now().date()
 
-friday = "2021-02-19"
+friday = "2021-04-9"
 stonkList = "GME AMC PLTR TSLA"
-data = yf.download(tickers = stonkList, interval = "1m",start = friday)
+data = yf.download(tickers = stonkList, period='1d', interval = "1m",start = friday)
 
 print(data)
 
-
+test_list = "PLTR GME"
+for i in range(100):
+    refresh_Data = yf.download(tickers = test_list, period='1d', interval = "1m")
+    print(refresh_Data.loc[refresh_Data.index[-1], 'Close'])
+    time.sleep(1)
 #-------------- Example --------------#
 
 # NXE = yf.Ticker("NXE")
