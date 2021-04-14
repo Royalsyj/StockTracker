@@ -14,11 +14,14 @@ data = yf.download(tickers = stonkList, period='1d', interval = "1m",start = fri
 
 print(data)
 
-test_list = "PLTR GME"
-for i in range(100):
+test_list = "PLTR GME CRSR AMD INTC NVDA"
+while True:
     refresh_Data = yf.download(tickers = test_list, period='1d', interval = "1m")
     print(refresh_Data.loc[refresh_Data.index[-1], 'Close'])
-    time.sleep(1)
+    time.sleep(10)
+    # To-do: Break down dataframe information into lists per stock
+    # To-do: Save a local csv file periodically with timestamps (one file per stock?)
+    # To-do: Filter out NaNs from latest downloads and only print out real numbers
 #-------------- Example --------------#
 
 # NXE = yf.Ticker("NXE")
