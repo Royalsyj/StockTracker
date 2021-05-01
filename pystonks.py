@@ -46,9 +46,6 @@ previousMarketPrice = {"NXE": NXE.info["regularMarketPrice"], "GME": GME.info["r
 # print("Ask: " + str(AMC.info["ask"]))
 # print("Ask: " + str(APHA.info["ask"]))
 
-
-### Added by YJ on 3 April 2021
-
 currentNXE = NXE.info["regularMarketPrice"]
 currentGME = GME.info["regularMarketPrice"]
 currentAMC = AMC.info["regularMarketPrice"]
